@@ -11,4 +11,13 @@ class Technology extends Model
 
     protected $fillable = ['name', 'slug'];
 
+    /**
+     * Get the tecnology projects posts
+     *
+     * @return void
+     */
+    public function projects(){
+        return $this->belongsToMany(Projects::class);
+    }
+
 }

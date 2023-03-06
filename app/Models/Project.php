@@ -19,4 +19,13 @@ class Project extends Model
     public function type(){
         return $this->belongsTo(Type::class);
     }
+
+    /**
+     * Get the project tecnologies
+     *
+     * @return void
+     */
+    public function tecnologies(){
+        return $this->belongsToMany(Technology::class);
+    }
 }
