@@ -8,7 +8,7 @@
                         <h2>ELENCO TECNOLOGIE</h2>
                     </div>
                     <div>
-                        {{-- <a href="{{ route('admin.posts.create') }}" class="btn btn-sm btn-primary">Aggiungi post</a> --}}
+                        <a href="{{ route('admin.technologies.create') }}" class="btn btn-sm btn-primary">Aggiungi tecnologia</a>
                     </div>
                 </div>
                 <hr>
@@ -34,13 +34,13 @@
                                     <a href="{{ route('admin.technologies.edit', $technology->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
                                         <i class="fas fa-edit text-black"></i>
                                     </a>
-                                    {{-- <form class="d-inline-block" action="{{ route('admin.posts.destroy', $post->slug )}}" method="POST">
+                                    <form class="d-inline-block" action="{{ route('admin.technologies.destroy', $technology->slug )}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-sm btn-square btn-danger" type="submit">
-                                        <i class="fas fa-trash"></i>
+                                    <button class="btn btn-sm btn-square btn-danger delete-button" type="submit">
+                                        <i class="fas fa-trash text-black"></i>
                                     </button>
-                                    </form> --}}
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -49,4 +49,5 @@
             </div>
         </div>
     </div>
+@include('admin.modals.modal_delete')
 @endsection

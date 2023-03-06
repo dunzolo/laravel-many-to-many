@@ -40,13 +40,13 @@
                                     <a href="{{ route('admin.types.edit', $type->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    {{-- <form class="d-inline-block" action="{{ route('admin.projects.destroy', $project->slug )}}" method="POST">
+                                    <form class="d-inline-block" action="{{ route('admin.types.destroy', $type->slug )}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-square btn-danger delete-button" type="submit" title="Cancella">
                                             <i class="fas fa-trash text-black"></i>
                                         </button>
-                                    </form> --}}
+                                    </form>
                                 </td>
                             </tr>
                         @empty
@@ -65,5 +65,5 @@
             </div>
         </div>
     </div>
-{{-- @include('admin.modals.modal_delete') --}}
+@include('admin.modals.modal_delete')
 @endsection
