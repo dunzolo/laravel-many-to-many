@@ -52,8 +52,11 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link login-modal" href="">Login</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
@@ -84,6 +87,7 @@
                 </div>
             </div>
         </nav>
+        @include('admin.modals.modal_login')
 
         <main class="">
             @yield('content')
