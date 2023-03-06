@@ -21,20 +21,20 @@
                             @csrf
                             @method('PUT')
                             <div class="mb-4 row">
-                                <label for="title" class="col-md-4 col-form-label text-md-right">Titolo</label>
-                                <div class="col-md-6">
+                                <label for="title" class="col-md-3 col-form-label text-md-right">Titolo</label>
+                                <div class="col-md-8">
                                     <input type="text" class="form-control" id="title" name="title" placeholder="Titolo" value="{{ old('title') ?? $project->title}}">
                                 </div>
                             </div>
                             <div class="mb-4 row">
-                                <label for="content" class="col-md-4 col-form-label text-md-right">Contenuto</label>
-                                <div class="col-md-6">
+                                <label for="content" class="col-md-3 col-form-label text-md-right">Contenuto</label>
+                                <div class="col-md-8">
                                     <textarea class="form-control" rows="5" name="content" id="content" placeholder="Contenuto">{{ $project->content }}</textarea>
                                 </div>
                             </div>
                             <div class="mb-4 row">
-                                <label for="title" class="col-md-4 col-form-label text-md-right">Tipologia</label>
-                                <div class="col-md-6">
+                                <label for="title" class="col-md-3 col-form-label text-md-right">Tipologia</label>
+                                <div class="col-md-8">
                                     <select class="form-control" name="type_id" id="type_id">
                                         <option value="">Seleziona una categoria</option>
                                         @foreach ($types as $type)
@@ -47,17 +47,19 @@
                                 </div>
                             </div>
                             <div class="mb-4 row">
-                                <label for="title" class="col-md-4 col-form-label text-md-right">Tecnologia</label>
-                                <div class="col-md-6">
-                                    @foreach ($technologies as $technology)
-                                    <div class="form-check" @error('technologies') is-invalid @enderror>
-                                        <input type="checkbox" value="{{ $technology->id }}" name="technologies[]" {{ $project->technologies->contains($technology) ? 'checked' : ''}}>
-                                        <label for="" class="form-check-label">{{ $technology->name }}</label>
-                                        @error('technologies')
-                                        <div class="invalid-feddback">{{ $message }}</div>
-                                        @enderror
+                                <label for="title" class="col-md-3 col-form-label text-md-right">Tecnologia</label>
+                                <div class="col-md-8">
+                                    <div class="row px-2" @error('technologies') is-invalid @enderror>
+                                        @foreach ($technologies as $technology)
+                                        <div class="form-check col-md-6" @error('technologies') is-invalid @enderror>
+                                            <input type="checkbox" value="{{ $technology->id }}" name="technologies[]" {{ $project->technologies->contains($technology) ? 'checked' : ''}}>
+                                            <label for="" class="form-check-label">{{ $technology->name }}</label>
+                                            @error('technologies')
+                                            <div class="invalid-feddback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        @endforeach
                                     </div>
-                                    @endforeach
                                 </div>
                             </div>
                             <div class="mb-4 row mb-0">

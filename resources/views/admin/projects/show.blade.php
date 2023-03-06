@@ -23,7 +23,7 @@
                 <label class="d-block"><strong>Tecnologia</strong></label>
                 <p>
                     @forelse ($project->technologies as $technology)
-                        {{ $technology->name}}
+                        {{ $technology->name }}
                     @empty
                         Nessuna tecnologia assocciato al progetto
                     @endforelse
