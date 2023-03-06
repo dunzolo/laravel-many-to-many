@@ -20,6 +20,14 @@
                 <p>{{ $project->content }}</p>
                 <label class="d-block"><strong>Tipologia</strong></label>
                 <p>{{ $project->type ? $project->type->name : 'Tipologia non definita' }}</p>
+                <label class="d-block"><strong>Tecnologia</strong></label>
+                <p>
+                    @forelse ($project->technologies as $technology)
+                        {{ $technology->name}}
+                    @empty
+                        Nessuna tecnologia assocciato al progetto
+                    @endforelse
+                </p>
             </div>
         </div>
     </div>
