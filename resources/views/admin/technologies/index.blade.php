@@ -8,7 +8,7 @@
                         <h2>ELENCO TECNOLOGIE</h2>
                     </div>
                     <div>
-                        <a href="{{ route('admin.technologies.create') }}" class="btn btn-sm btn-primary">Aggiungi tecnologia</a>
+                        <a href="{{ route('admin.technologies.create') }}" class="btn btn-sm btn-primary">Aggiungi</a>
                     </div>
                 </div>
                 <hr>
