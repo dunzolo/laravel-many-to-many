@@ -46,6 +46,20 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="mb-4 row">
+                                <label for="title" class="col-md-4 col-form-label text-md-right">Tecnologia</label>
+                                <div class="col-md-6">
+                                    @foreach ($technologies as $technology)
+                                    <div class="form-check" @error('technologies') is-invalid @enderror>
+                                        <input type="checkbox" value="{{ $technology->id }}" name="technologies[]" {{ $project->technologies->contains($technology) ? 'checked' : ''}}>
+                                        <label for="" class="form-check-label">{{ $technology->name }}</label>
+                                        @error('technologies')
+                                        <div class="invalid-feddback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
                             <div class="mb-4 row mb-0">
                                 <div>
                                     <a class="btn btn-sm btn-primary" href="{{ route('admin.projects.index') }}">Indietro</a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -60,9 +61,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        dd($project);
         return view('admin.projects.show', compact('project'));
-
     }
 
     /**
@@ -74,7 +73,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -93,6 +93,11 @@ class ProjectController extends Controller
         $form_data['slug'] = $slug;
 
         $project->update($form_data);
+
+         if($request->has('technologies')){
+
+            $project->technologies()->sync($request->technologies);
+        }
 
         return redirect()->route('admin.projects.index')->with('message', 'Progetto aggiornato correttamente!');
     }
