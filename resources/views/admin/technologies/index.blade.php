@@ -19,6 +19,7 @@
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Slug</th>
+                        <th>Azioni</th>
                     </thead>
                     <tbody>
                         @foreach ($technologies as $technology)
@@ -26,6 +27,21 @@
                                 <td>{{ $technology->id}}</td>
                                 <td>{{ $technology->name}}</td>
                                 <td>{{ $technology->slug}}</td>
+                                <td>
+                                    <a href="{{ route('admin.technologies.show', $technology->slug)}}" title="Visualizza" class="btn btn-sm btn-square btn-primary">
+                                        <i class="fas fa-eye text-black"></i>
+                                    </a>
+                                    <a href="{{ route('admin.technologies.edit', $technology->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
+                                        <i class="fas fa-edit text-black"></i>
+                                    </a>
+                                    {{-- <form class="d-inline-block" action="{{ route('admin.posts.destroy', $post->slug )}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-square btn-danger" type="submit">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    </form> --}}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

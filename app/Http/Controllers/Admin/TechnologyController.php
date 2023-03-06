@@ -6,6 +6,8 @@ use App\Models\Technology;
 use App\Http\Controllers\Controller; //NON BISOGNA DIMENTICARLO!!
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
+use Illuminate\Support\Str;
+
 
 class TechnologyController extends Controller
 {
@@ -49,7 +51,8 @@ class TechnologyController extends Controller
      */
     public function show(Technology $technology)
     {
-        //
+        return view('admin.technologies.show', compact('technology'));
+
     }
 
     /**
@@ -60,7 +63,7 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        //
+        return view('admin.technologies.edit', compact('technology'));
     }
 
     /**
@@ -72,7 +75,16 @@ class TechnologyController extends Controller
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
-        //
+        $form_data = $request->validated();
+
+        $slug = Str::slug($request->name, '-');
+
+        $form_data['slug'] = $slug;
+
+        //possso farlo perchè ho definito il fillable
+        $technology->update($form_data);
+
+        return redirect()->route('admin.technologies.index')->with('message', 'Modifiche correttamente eseguite');
     }
 
     /**
